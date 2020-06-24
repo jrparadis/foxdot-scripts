@@ -24,8 +24,8 @@ os.mkdir(f'{cwd}/{filenamenoext}')
 os.mkdir(f'{cwd}/{filenamenoext}/temp')
 for each in range(0,len(sound),sampletime):
     newAudio = sound[each:each+sampletime]
-    newAudio.export(f'{os.getcwd()}/{filenamenoext}/temp/myfile{each}.wav', format='wav')
-    outputfiles.append(f'{os.getcwd()}/{filenamenoext}/temp/myfile{each}.wav')
+    newAudio.export(f'{cwd}/{filenamenoext}/temp/myfile{each}.wav', format='wav')
+    outputfiles.append(f'{cwd}/{filenamenoext}/temp/myfile{each}.wav')
 
 random.shuffle(outputfiles)
 randomfiles = [random.choice(outputfiles) for x in range(0,48)]
@@ -37,14 +37,14 @@ for each in allchars:
     os.mkdir(f'{cwd}/{filenamenoext}/' + each)
     os.mkdir(f'{cwd}/{filenamenoext}/' + each + '/lower')
     os.mkdir(f'{cwd}/{filenamenoext}/' + each + '/upper')
-    shutil.move(outputfiles[0],f'{os.getcwd()}/{filenamenoext}/' + each + '/lower')
+    shutil.move(outputfiles[0],f'{cwd}/{filenamenoext}/' + each + '/lower')
     outputfiles.pop(0)
-    shutil.move(outputfiles[0],f'{os.getcwd()}/{filenamenoext}/' + each + '/upper')
+    shutil.move(outputfiles[0],f'{cwd}/{filenamenoext}/' + each + '/upper')
     outputfiles.pop(0)
 
-shutil.rmtree(f'{os.getcwd()}/{filenamenoext}/temp')
+shutil.rmtree(f'{cwd}/{filenamenoext}/temp')
 
 #run this to load folder of samples, play them all with play('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
-print(f'python3 -m FoxDot --dir {os.getcwd()}/{filenamenoext}')
+print(f'python3 -m FoxDot --dir {cwd}/{filenamenoext}')
 
     
