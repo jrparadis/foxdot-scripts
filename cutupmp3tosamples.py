@@ -10,8 +10,8 @@ import shutil
 #time in ms
 sampletime = 250
 #could change this to a kwarg, just put the mp3 file in the same folder as the script for now
-filename = 'kebabtraume.mp3'
-filenamenoext = filename.split('.')[0]
+#this seems to have issues with ffmpeg on windows at times, I just use linux instead
+filename = 'example.mp3'
 sound = AudioSegment.from_file(filename, format='mp3')
 outputfiles = []
 cwd = os.getcwd()
@@ -24,8 +24,8 @@ os.mkdir(f'{cwd}/{filenamenoext}')
 os.mkdir(f'{cwd}/{filenamenoext}/temp')
 for each in range(0,len(sound),sampletime):
     newAudio = sound[each:each+sampletime]
-    newAudio.export(f'{cwd}/{filenamenoext}/temp/myfile{each}.wav', format='wav')
-    outputfiles.append(f'{cwd}/{filenamenoext}/temp/myfile{each}.wav')
+    newAudio.export(f'{cwd}/{filenamenoext}/temp/{each}.wav', format='wav')
+    outputfiles.append(f'{cwd}/{filenamenoext}/temp/{each}.wav')
 
 random.shuffle(outputfiles)
 randomfiles = [random.choice(outputfiles) for x in range(0,48)]
