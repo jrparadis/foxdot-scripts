@@ -12,6 +12,7 @@ sampletime = 250
 #could change this to a kwarg, just put the mp3 file in the same folder as the script for now
 #this seems to have issues with ffmpeg on windows at times, I just use linux instead
 filename = 'example.mp3'
+filenamenoext = filename.split('.')[0]
 sound = AudioSegment.from_file(filename, format='mp3')
 outputfiles = []
 cwd = os.getcwd()
@@ -33,6 +34,8 @@ print(randomfiles)
 
 allchars = string.ascii_lowercase
 
+key = 'z' #key to use for sampling if you enable line 48
+
 for each in allchars:
     os.mkdir(f'{cwd}/{filenamenoext}/' + each)
     os.mkdir(f'{cwd}/{filenamenoext}/' + each + '/lower')
@@ -41,7 +44,9 @@ for each in allchars:
     outputfiles.pop(0)
     shutil.move(outputfiles[0],f'{cwd}/{filenamenoext}/' + each + '/upper')
     outputfiles.pop(0)
-
+    
+    #version for moving to a certain folder with default samples available, default foxdot samples need to be in a folder named snd in the same directory
+    #shutil.move(each,f'{os.getcwd()}/snd/' + key + '/upper')
 shutil.rmtree(f'{cwd}/{filenamenoext}/temp')
 
 #run this to load folder of samples, play them all with play('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
