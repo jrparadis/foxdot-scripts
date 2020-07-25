@@ -34,7 +34,7 @@ print(randomfiles)
 
 allchars = string.ascii_lowercase
 
-key = 'z' #key to use for sampling if you enable line 48
+key = 'z' #key to use for sampling if you enable line 49
 
 for each in allchars:
     os.mkdir(f'{cwd}/{filenamenoext}/' + each)
